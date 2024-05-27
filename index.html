@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!--Title Section-->
+    <div class="welcome">
+      <div class="game-title">TIC TAC TOE</div>
+      <button id="playBtn">Play</button>
+    </div>
+
+    <!--Hero Section-->
+    <div class="main-container">
+      <div class="main-content">
+        <div class="main-prompt">Choose the player you want to be</div>
+        <div class="char-options">
+          <button class="pl-x">Player X</button>
+          <button class="pl-o">Player O</button>
+        </div>
+      </div>
+    </div>
+
+    <!--Input Section-->
+    <div class="sec-content">
+      <div class="sec-title">Enter your name:</div>
+      <input type="text" id="playerNameInput" placeholder="Your Name" />
+      <button id="starGameBtn">Start Game</button>
+    </div>
+
+    <!--Main Container -->
+    <div class="sec-container">
+      <div class="game-board">
+        <div class="player-turn">
+          <!--Span to group inline elements. Will flow within the surround texts and not start on a new line
+             -->
+          <span id="playerName"></span>
+          <span id="opponentName"> Computer </span>
+          <div class="slider"></div>
+        </div>
+      </div>
+      <!--Grid Section 3x3-->
+      <div class="grid-area">
+        <section>
+          <span class="tile1"></span>
+          <span class="tile2"></span>
+          <span class="tile3"></span>
+        </section>
+        <section>
+          <span class="tile4"></span>
+          <span class="tile5"></span>
+          <span class="tile6"></span>
+        </section>
+        <section>
+          <span class="tile7"></span>
+          <span class="tile8"></span>
+          <span class="tile0"></span>
+        </section>
+      </div>
+    </div>
+
+    <!--Result Display-->
+    <div class="game-result">
+      <div class="winner-name"></div>
+      <div class="playAgainBtn">
+        <button>Play Again</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
