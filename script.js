@@ -8,11 +8,11 @@ const mainContainer = document.querySelector(".main-container"), //selecting the
   secSpan = document.querySelectorAll(".section span"), //selecting the span of all section spans
   gameResult = document.querySelector(".game-result"), //selecting the game result
   winnerNameText = gameResult.querySelector(".winner-name"), //selecting the winner calling gameResult and selecting the winner name along with the button
-  playAgainBtn = gameResult.querySelector("button");
-(welcomeSection = document.querySelector(".welcome")), //selecting the welcome section
-  (playerName = document.getElementById("playerName")), //selecting the player name
-  (secContent = document.querySelector(".sec-content")), //selecting the section content
-  (playerNameInput = docoument.getElementById("playerNameInput")); //selecting the player name input
+  playAgainBtn = gameResult.querySelector("button"),
+  welcomeSection = document.querySelector(".welcome"), //selecting the welcome section
+  playerName = document.getElementById("playerName"), //selecting the player name
+  secContent = document.querySelector(".sec-content"), //selecting the section content
+  playerNameInput = docoument.getElementById("playerNameInput"); //selecting the player name input
 
 //codeblock to execute after windows finishes loading
 window.onload = () => {
@@ -37,7 +37,47 @@ charSelectO.onclick = () => {
   playerName.textConent = "Player O"; //changing the text content of the playerName element
 };
 
-const playerBtn = document.getElementById("playerBtn"); //selecting the player button
+//playBtn event listener that triggers an event listener on click, to display the main container and hide the welcome section
+const playBtn = document.getElementById("playerBtn"); //selecting the player button
+playBtn.addEventListener("click", () => {
+  welcomeSection.style.display = "none";
+  mainContainer.style.display = "flex";
+  secContainer.style.display = "block";
+  secContent.style.display = "block";
+});
 
-//Todo: add the event listener to the player button
-playerBtn.addEventListener("click", () => {}); //adding the event listener to the player button
+//Start game button event listener that triggers an event listener on click, to display the section content and hide the section container
+//Gets players name from the input field and sets the players name based on the input and the active player X or O
+//Toggles the visibility of the sec content and set container
+const startGameBtn = document.getElementById("startGameBtn"); //selecting the start game button
+startGameBtn.addEventListener("click", () => {
+  const name = playerNameInput.value; // gets the value of the player name input field
+
+  playerName.textContent =
+    `${name} ${playerTurn.classList.contains("player") ? "O" : "X"}` ||
+    "Player" + playerSign; //set the player's name based on the input and the current players if it is X or O
+  secContent.classList.remove("show"); //removes the show class from the secondary content and displays the section container instead
+  secContainer.classList.add("show");
+});
+
+//game related variables
+let playerXIcon = "fas fa-times"; //setting the player X icon
+let playerOIcon = "far fa-circle"; //setting the player O icon
+let playerSign = "X"; //setting the player sign to X
+let playerSignValue = "X"; //setting the player sign value to X
+let runBot = true; //setting the runBot to true
+
+//click box function for handling the click on users keyboard
+function clickedBox(e) {
+  if (playerTurn.classList.contains("Player")) {
+    playerSign = "O"; //if the player turn contains the player class, set the player sign to O
+    playerSignValue = "O"; //if the player turn contains the player class, set the player sign value to O
+    element.innerHTML = `<i class = "${playerOIcon}"></i>`; //set the innerHTML of the element to the player O icon
+    playerTurn.classList.remove("active");
+    element.setAttribute("id", playerSign);
+  } else {
+    element.innerHTML = `<i class = "${playerXIcon}"></i>`; //set the innerHTML of the element to the player X icon
+    element.setAttribute("id", playerSign);
+    playerTurn.classList.add("active");
+  }
+}
