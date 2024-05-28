@@ -110,13 +110,6 @@ function bot() {
     }
   }
 
-  /*
-  1. Randomly select an index from the array of available tiles using math.random and math.floor
-  2. Check if there are any avaialble tiles in the array to select. If there are, check if the player turn contains the player class and set the player sign to along with the player X icon
-  3. If there are no available tiles, set the player sign to O and the player O icon
-  4. Once the conditions have been checked, it runs the selectWinner function and determines if there is a winner or if it is a draw
-  5. Disables the click events on the select tile to prevent interuption and enables the click events on the section container for the next game turn
-  */
   let randomBox = array[Math.floor(Math.random() * array.length)];
   if (array.length > 0) {
     if (playerTurn.classList.contains("player")) {
@@ -124,15 +117,80 @@ function bot() {
       secSpan[randomBox].innerHTML = `<i class = "${playerXIcon}"></i>`;
       secSpan[randomBox].setAttribute("id", playerSign);
       playerTurn.classList.add("active");
+    } else {
+      secSpan[randomBox].innerHTML = `<i class = "${playerOIcon}"></i>`;
+      playerTurn.classList.remove("active");
+      secSpan[randomBox].setAttribute("id", playerSign);
+    }
+    selectWinner();
+
+    secSpan[randomBox].style.pointerEvents = "none";
+    secContainer.style.pointerEvents = "auto";
+    playerSign = "X";
+  }
+}
+
+//helper function to check the sign of a specifc tile position
+//gets ID value of the specific class. selecting the element with a specific class and replace its id
+function getIdVal() {
+  return document.querySelector(".tile" + classname).id;
+  //takes the paremter class name , which is the class name of the element, which retrieves the id of the element with the specific class name and returns it
+}
+//checks if three ids have the same sign
+function checkIdSign(val1, val2, val3, sign) {
+  if (
+    //calls getIdVal func to retrieve the id of the element with the specific class name and checks if the id is equal to the sign
+    getIdVal(val1) == sign &&
+    getIdVal(val2) == sign &&
+    getIdVal(val3) == sign
+  ) {
+    return true;
+  }
+}
+
+function selectWinner() {
+  if (
+    checkIdSign(1, 2, 3, playerSign) ||
+    checkIdSign(4, 5, 6, playerSign) ||
+    checkIdSign(7, 8, 9, playerSign) ||
+    checkIdSign(1, 4, 7, playerSign) ||
+    checkIdSign(2, 5, 8, playerSign) ||
+    checkIdSign(3, 6, 9, playerSign) ||
+    checkIdSign(1, 5, 9, playerSign) ||
+    checkIdSign(3, 5, 7, playerSign) ||
+    checkIdSign(3, 6, 9, playerSign)
+  ) {
+    runBot = false;
+    bot(runBot);
+    setTimeout(() => {
+      gameResult.classList.add("show");
+      secContainer.classList.remove("show");
+    }, 700);
+
+    if (playerSignValue == playerSign) {
+      winnerNameText.innerHTML = `<span class = "match-inline"><p class="winName">${playerNameInput.value}</p> won the game!`;
+    } else {
+      winnerNameText.innerHTML = "Computer has won!";
     }
   } else {
-    secSpan[randomBox].innerHTML = `<i class = "${playerOIcon}"></i>`;
-    playerTurn.classList.remove("active");
-    secSpan[randomBox].setAttribute("id", playerSign);
+    if (
+      getIdVal(1) != "" &&
+      getIdVal(2) != "" &&
+      getIdVal(3) != "" &&
+      getIdVal(4) != "" &&
+      getIdVal(5) != "" &&
+      getIdVal(6) != "" &&
+      getIdVal(7) != "" &&
+      getIdVal(8) != "" &&
+      getIdVal(9) != ""
+    ) {
+      runBot = false;
+      bot(runBot);
+      setTimeout(() => {
+        gameResult.classList.add("show");
+        secContainer.classList.remove("show");
+      }, 700);
+      winnerNameText.textContent = "It's a tie!";
+    }
   }
-  selectWinner();
-
-  secSpan[randomBox].style.pointerEvents = "none";
-  secContainer.style.pointerEvents = "auto";
-  playerSign = "X";
 }

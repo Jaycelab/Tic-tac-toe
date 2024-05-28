@@ -1,0 +1,8 @@
+RandomBox: 
+  
+  1. Randomly select an index from the array of available tiles using math.random and math.floor
+  2. Check if there are any avaialble tiles in the array to select. If there are, check if the player turn contains the player class and set the player sign to along with the player X icon
+  3. If there are no available tiles, set the player sign to O and the player O icon
+  4. Once the conditions have been checked, it runs the selectWinner function and determines if there is a winner or if it is a draw
+  5. Disables the click events on the select tile to prevent interuption and enables the click events on the section container for the next game turn
+  
