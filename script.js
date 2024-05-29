@@ -3,7 +3,7 @@
 const mainContainer = document.querySelector(".main-container"), //selecting the main container
   charSelectX = mainContainer.querySelector(".char-options .pl-x"), //selecting the x character
   charSelectO = mainContainer.querySelector(".char-options .pl-o"), //selecting the o character
-  secContainer = docoument.querySelector(".sec-container"), //selecting the section container
+  secContainer = document.querySelector(".sec-container"), //selecting the section container
   playerTurn = document.querySelector(".player-turn"), //selecting the player turn
   secSpan = document.querySelectorAll(".section span"), //selecting the span of all section spans
   gameResult = document.querySelector(".game-result"), //selecting the game result
@@ -12,7 +12,7 @@ const mainContainer = document.querySelector(".main-container"), //selecting the
   welcomeSection = document.querySelector(".welcome"), //selecting the welcome section
   playerName = document.getElementById("playerName"), //selecting the player name
   secContent = document.querySelector(".sec-content"), //selecting the section content
-  playerNameInput = docoument.getElementById("playerNameInput"); //selecting the player name input
+  playerNameInput = document.getElementById("playerNameInput"); //selecting the player name input
 
 //codeblock to execute after windows finishes loading
 window.onload = () => {
@@ -38,7 +38,7 @@ charSelectO.onclick = () => {
 };
 
 //playBtn event listener that triggers an event listener on click, to display the main container and hide the welcome section
-const playBtn = document.getElementById("playerBtn"); //selecting the player button
+const playBtn = document.getElementById("playBtn"); //selecting the player button
 playBtn.addEventListener("click", () => {
   welcomeSection.style.display = "none";
   mainContainer.style.display = "flex";
