@@ -1,12 +1,10 @@
 RandomBox: 
+- Randomly select an index from the array of available tiles using math.random and math.floor
+- Check if there are any avaialble tiles in the array to select. If there are, check if the player turn contains the player class and set the player sign to along with the player X icon
+- If there are no available tiles, set the player sign to O and the player O icon
+- Once the conditions have been checked, it runs the selectWinner function and determines if there is a winner or if it is a draw
+- Disables the click events on the select tile to prevent interuption and enables the click events on the section container for the next game turn
   
-  1. Randomly select an index from the array of available tiles using math.random and math.floor
-  2. Check if there are any avaialble tiles in the array to select. If there are, check if the player turn contains the player class and set the player sign to along with the player X icon
-  3. If there are no available tiles, set the player sign to O and the player O icon
-  4. Once the conditions have been checked, it runs the selectWinner function and determines if there is a winner or if it is a draw
-  5. Disables the click events on the select tile to prevent interuption and enables the click events on the section container for the next game turn
-  
-
 startGameBtn:
-Gets players name from the input field and sets the players name based on the input and the active player X or OToggles the visibility of the sec content and set container
-Start game button event listener that triggers an event listener on click, to display the section content and hide the section container
+- Gets players name from the input field and sets the players name based on the input and the active player X or OToggles the visibility of the sec content and set container
+- Start game button event listener that triggers an event listener on click, to display the section content and hide the section container
