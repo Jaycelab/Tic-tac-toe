@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,500;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f0f0d8;
+  background: radial-gradient(
+    circle,
+    rgb(223, 248, 222) 0%,
+    rgba(112, 173, 116, 0.795) 100%
+  );
+  font-family: "Nunito", sans-serif;
+  font-weight: 500;
+  font-size: 1.12em;
+}
+
+/*free positioning within parent container */
+.welcome {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  border: 2px dashed #1a3f1d;
+  background-color: #e6e4e1;
+  padding: 40px 90px;
+  border-radius: 10%;
+}
