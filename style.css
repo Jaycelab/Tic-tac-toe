@@ -302,16 +302,33 @@ grid-area {
   background: white;
   border: 1px solid #c7c7c79f;
 }
+.game-result.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+.winName {
+  font-family: inherit;
+  font-size: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 4px 4px #3d23025d;
+  -webkit-text-stroke: 0.1px #fff8f8;
+}
 
 .game-result {
-  padding: 25px 20px;
-  border-radius: 5px;
-  max-width: 400px;
-  width: 100%;
-  opacity: 0;
+  position: absolute;
   text-align: center;
-  background-color: white;
-  transform: translate(-50%, -50%) scale(0.9);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  border: 7px double #5c4831;
+  background-color: #fafcb2e1;
+  padding: 50px 90px;
+  border-radius: 10%;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .game-result .winner-name {
@@ -326,9 +343,29 @@ grid-area {
   margin: 0 5px;
 }
 
-.game-result .PlayAgainBtn {
-  width: 100%;
-  margin-top: 25px;
+.game-result button {
+  background: #e64141;
+  color: white;
   display: flex;
   justify-content: center;
+  margin: auto;
+  padding: 10px 20px;
+  font-family: inherit;
+
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 25px;
+}
+
+.game-result button:hover {
+  background: #fc7e7e;
+  color: black;
+  transform: scale(1.1);
 }

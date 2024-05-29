@@ -6,3 +6,7 @@ RandomBox:
   4. Once the conditions have been checked, it runs the selectWinner function and determines if there is a winner or if it is a draw
   5. Disables the click events on the select tile to prevent interuption and enables the click events on the section container for the next game turn
   
+
+startGameBtn:
+Gets players name from the input field and sets the players name based on the input and the active player X or OToggles the visibility of the sec content and set container
+Start game button event listener that triggers an event listener on click, to display the section content and hide the section container

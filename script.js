@@ -46,9 +46,6 @@ playBtn.addEventListener("click", () => {
   secContent.style.display = "block";
 });
 
-//Start game button event listener that triggers an event listener on click, to display the section content and hide the section container
-//Gets players name from the input field and sets the players name based on the input and the active player X or O
-//Toggles the visibility of the sec content and set container
 const startGameBtn = document.getElementById("startGameBtn"); //selecting the start game button
 startGameBtn.addEventListener("click", () => {
   const name = playerNameInput.value; // gets the value of the player name input field
@@ -194,3 +191,8 @@ function selectWinner() {
     }
   }
 }
+
+//play again button event listener that triggers an event listener on click, to reload the window
+playAgainBtn.onclick = () => {
+  window.location.reload();
+};
