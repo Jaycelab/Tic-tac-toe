@@ -1,3 +1,9 @@
+CSS Notes:
+-  transition: all 0.3s ease: smooth transition effect on the element after an event has been triggered
+-webkit-text-stroke: 1px black : creates a black stroke around the text. Similar to a border but around the text itself
+
+JS Logic:
+
 RandomBox: 
 - Randomly select an index from the array of available tiles using math.random and math.floor
 - Check if there are any avaialble tiles in the array to select. If there are, check if the player turn contains the player class and set the player sign to along with the player X icon

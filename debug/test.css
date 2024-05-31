@@ -12,12 +12,12 @@ body {
   background: #f0f0d8;
   background: radial-gradient(
     circle,
-    rgb(223, 248, 222) 0%,
-    rgba(112, 173, 116, 0.795) 100%
+    rgb(212, 206, 190) 0%,
+    rgba(212, 204, 157, 0.795) 100%
   );
   font-family: "Nunito", sans-serif;
+  font-size: 1.7em;
   font-weight: 500;
-  font-size: 1.12em;
 }
 
 /*free positioning within parent container */
@@ -31,4 +31,201 @@ body {
   background-color: #e6e4e1;
   padding: 40px 90px;
   border-radius: 10%;
+}
+
+.game-title {
+  font-family: "Nunito", sans-serif;
+  font-size: 50px;
+  color: rgb(206, 199, 191);
+  text-shadow: 4px 4px #3d23025d; /*black backstroke text */
+  -webkit-text-stroke: 1px black;
+}
+/*Play Button Section */
+#PlayBtn {
+  background: #4b2f0a;
+  color: white;
+  display: grid;
+  margin: auto;
+  align-content: center;
+  padding: 10px 20px;
+  font-family: "Coming Soon", sans-serif;
+  font-size: 0.8em;
+  font-weight: 500;
+  text-align: center;
+  border: none;
+  border-radius: 7.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#PlayBtn:hover {
+  background-color: #352209;
+  transform: scale(1.1);
+}
+
+/*Main Container*/
+.main-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  border: 2px dashed #5c4831;
+  background-color: #f3ece1;
+  padding: 50px 50px;
+  border-radius: 10%;
+  max-width: max-content;
+  width: 100%;
+}
+
+.main-container.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.main-prompt {
+  font-size: 30px;
+  font-weight: 500;
+  margin: 20px 0;
+  font-family: "Coming Soon", sans-serif;
+}
+
+/*Player Container*/
+.char-options {
+  display: flex;
+  width: 100%; /*100% width to span full main container*/
+}
+
+.char-options button {
+  width: 100%;
+  margin: 15px;
+  background-color: #4b2f0a;
+  color: #fff !important;
+  align-content: center;
+  padding: 10px 20px;
+  font-family: "Coming Soon", sans-serif;
+  font-size: 0.8em;
+  font-weight: 500;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+/*Player X Hover*/
+.char-options .pl-X:hover {
+  background-color: #ceb580;
+  transform: scale(0.95);
+}
+
+/*Player O Hover*/
+.char-options .pl-O:hover {
+  background-color: #ffc248;
+  transform: scale(0.95);
+}
+
+/*Second Container*/
+.sec-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  border: 2px dashed #5c4b31;
+  background-color: #f3ece1;
+  padding: 50px 90px;
+  border-radius: 10%;
+}
+
+.sec-container.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/*Game Board*/
+.game-board {
+  padding: 7px;
+  border-radius: 5px;
+  background: white;
+  border: 1px solid #c7c7c79f;
+}
+
+/*Player Turn*/
+.player-turn {
+  width: 100%;
+  display: flex;
+  position: relative; /*relative positioning to second container*/
+  justify-content: space-between;
+}
+
+.player-turn span {
+  position: relative;
+  z-index: 2;
+  color: black;
+}
+
+/*Player Info Section*/
+.sec-content {
+  font-family: "Coming Soon", sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  border: 2px dashed #5c4831;
+  background-color: #f3ece1;
+  padding: 50px 90px;
+  border-radius: 10%;
+}
+
+.sec-title {
+  font-size: 1em;
+  font-weight: 500;
+  margin: 8px 0px;
+  font-family: "Coming Soon", sans-serif;
+}
+
+/*Player Info Input*/
+.sec-content input {
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+  font-size: 1.5em;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-family: "Caveat Brush", cursive;
+}
+
+/*Player Info Placeholder*/
+.sec-content input::placeholder {
+  width: 100%;
+  text-align: center;
+  font-family: "Nunito", sans-serif;
+  font-size: 0.7em;
+  font-weight: 500;
+}
+
+/*Start Button Section*/
+.sec-content button {
+  background-color: #368f62;
+  color: #fff !important;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding: 10px 20px;
+  font-family: "Nunito", sans-serif;
+  font-size: 0.8em;
+  font-weight: 500;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sec-content button:hover {
+  background-color: #6aebaa;
+  transform: scale(1.1);
 }
