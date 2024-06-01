@@ -9,6 +9,13 @@ This is a simple implementation of the classic game Tic Tac Toe.
 - The first player to get three of their symbols in a row (horizontally, vertically, or diagonally) wins the game.
 - If all cells are filled and no player has won, the game is a draw.
 
+## Known Issues
+
+- After a delay, selectWinner() function to select a winner function does not get called.
+- Choosing Player 0 assins player to Computer instead of Player.
+- Winning result not properly displaying on mobile/tablet
+- Reduce player input and placeholder on tablet/mobile
+
 ## Future Enhancements
 
 - Implement a graphical user interface (GUI) for a more interactive experience.
