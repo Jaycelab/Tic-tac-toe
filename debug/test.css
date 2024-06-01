@@ -126,18 +126,20 @@ body {
 
 /*Second Container*/
 .sec-container {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.sec-container.show {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   transition: all 0.3s ease;
   border: 2px dashed #5c4b31;
   background-color: #f3ece1;
   padding: 50px 90px;
   border-radius: 10%;
-}
-
-.sec-container.show {
   opacity: 1;
   pointer-events: auto;
   transform: translate(-50%, -50%) scale(1);
@@ -193,7 +195,7 @@ body {
   left: 0;
   width: 50%;
   height: 100%;
-  background-color: #79cc77;
+  background-color: #43cfcf;
   border-radius: 5px;
   transition: all 0.3s ease;
 }
@@ -221,20 +223,74 @@ body {
 
 .grid-area section {
   display: flex;
+  margin-bottom: 1px;
 }
 
+/*Individual Grid Span*/
+.grid-area section span {
+  display: block;
+  height: 90px;
+  width: 90px;
+  margin: 2px;
+  font-size: 40px;
+  line-height: 80px;
+  text-align: center;
+  border-radius: 5px;
+  background: white;
+  border: 1px solid #c7c7c79f;
+  font-family: "Coming Soon", sans-serif;
+}
+/*Game Results*/
+.game-result {
+  padding: 25px 20px;
+  border-radius: 5px;
+  max-width: 400px;
+  width: 100%;
+  opacity: 0;
+  text-align: center;
+  background-color: white;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.game-result .winner-name {
+  font-size: 30px;
+  font-weight: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+.game-result .winner-name p {
+  font-weight: 600;
+  margin: 0 5px;
+}
+
+.game-result .PlayAgainBtn {
+  width: 100%;
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
 /*Player Info Section*/
 .sec-content {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.sec-content.show {
   font-family: "Coming Soon", sans-serif;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+
   transition: all 0.3s ease;
   border: 2px dashed #5c4831;
   background-color: #f3ece1;
   padding: 50px 90px;
   border-radius: 10%;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .sec-title {
@@ -267,7 +323,7 @@ body {
 
 /*Start Button Section*/
 .sec-content button {
-  background-color: #368f62;
+  background-color: #bec2c0;
   color: #fff !important;
   display: flex;
   justify-content: center;
