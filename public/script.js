@@ -129,11 +129,11 @@ function bot() {
 
 //helper function to check the sign of a specifc tile position
 //gets ID value of the specific class. selecting the element with a specific class and replace its id
-function getIdVal() {
+function getIdVal(classname) {
   return document.querySelector(".tile" + classname).id;
   //takes the paremter class name , which is the class name of the element, which retrieves the id of the element with the specific class name and returns it
 }
-//checks if three ids have the same sign
+//checks if three ids have the same sign 
 function checkIdSign(val1, val2, val3, sign) {
   if (
     //calls getIdVal func to retrieve the id of the element with the specific class name and checks if the id is equal to the sign

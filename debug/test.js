@@ -69,7 +69,7 @@ function clickedBox(element) {
   if (playerTurn.classList.contains("player")) {
     playerSign = "O";
     playerSignValue = "O";
-    element.innerHTML = `<i class = "${playerOIcon}"></i>`;
+    element.innerHTML = `<i class = "${playerOIcon}"></i>`; ////////////////
     playerTurn.classList.remove("active");
     element.setAttribute("id", playerSign);
   } else {
@@ -78,7 +78,7 @@ function clickedBox(element) {
     playerTurn.classList.add("active");
   }
 
-  //selectWinner();
+  selectWinner();
 
   element.style.pointerEvents = "none";
   secContainer.style.pointerEvents = "none";
@@ -88,3 +88,108 @@ function clickedBox(element) {
     bot(runBot);
   }, randomTimeDelay);
 }
+
+// BOT FUNCTION
+
+function bot() {
+  let array = [];
+  if (runBot) {
+    playerSign = "O"; //setting the player sign to O
+  }
+  //iterating through the secSpan array to check there are any available tiles or sets
+  for (let i = 0; i < secSpan.length; i++) {
+    //if child element count of the secSpan is 0, push the index of the element to the array
+    if (secSpan[i].childElementCount === 0) {
+      array.push(i);
+    }
+  }
+
+  let randomBox = array[Math.floor(Math.random() * array.length)];
+  if (array.length > 0) {
+    if (playerTurn.classList.contains("player")) {
+      playerSign = "X";
+      secSpan[randomBox].innerHTML = `<i class = '${playerXIcon}'></i>`;
+      secSpan[randomBox].setAttribute("id", playerSign);
+      playerTurn.classList.add("active");
+    } else {
+      secSpan[randomBox].innerHTML = `<i class = '${playerOIcon}'></i>`;
+      playerTurn.classList.remove("active");
+      secSpan[randomBox].setAttribute("id", playerSign);
+    }
+    selectWinner();
+
+    secSpan[randomBox].style.pointerEvents = "none";
+    secContainer.style.pointerEvents = "auto";
+    playerSign = "X";
+  }
+}
+
+//helper function to check the sign of a specifc tile position
+//gets ID value of the specific class. selecting the element with a specific class and replace its id
+function getIdVal(classname) {
+  return document.querySelector(".tile" + classname).id;
+  //takes the paremter class name , which is the class name of the element, which retrieves the id of the element with the specific class name and returns it
+}
+//checks if three ids have the same sign
+function checkIdSign(val1, val2, val3, sign) {
+  if (
+    //calls getIdVal func to retrieve the id of the element with the specific class name and checks if the id is equal to the sign
+    getIdVal(val1) == sign &&
+    getIdVal(val2) == sign &&
+    getIdVal(val3) == sign
+  ) {
+    return true;
+  }
+}
+
+function selectWinner() {
+  if (
+    checkIdSign(1, 2, 3, playerSign) ||
+    checkIdSign(4, 5, 6, playerSign) ||
+    checkIdSign(7, 8, 9, playerSign) ||
+    checkIdSign(1, 4, 7, playerSign) ||
+    checkIdSign(2, 5, 8, playerSign) ||
+    checkIdSign(3, 6, 9, playerSign) ||
+    checkIdSign(3, 6, 9, playerSign) ||
+    checkIdSign(1, 5, 7, playerSign) ||
+    checkIdSign(3, 5, 7, playerSign)
+  ) {
+    runBot = false;
+    bot(runBot);
+    setTimeout(() => {
+      gameResult.classList.add("show");
+      secContainer.classList.remove("show");
+    }, 700);
+
+    if (playerSignValue == playerSign) {
+      winnerNameText.innerHTML = `<span class = "match-inline"><p class="winName">${playerNameInput.value}</p> won the game!`;
+    } else {
+      winnerNameText.innerHTML = "Computer has won!";
+    }
+  } else {
+    if (
+      getIdVal(1) != "" &&
+      getIdVal(2) != "" &&
+      getIdVal(3) != "" &&
+      getIdVal(4) != "" &&
+      getIdVal(5) != "" &&
+      getIdVal(6) != "" &&
+      getIdVal(7) != "" &&
+      getIdVal(8) != "" &&
+      getIdVal(9) != ""
+    ) {
+      runBot = false;
+      bot(runBot);
+      setTimeout(() => {
+        gameResult.classList.add("show");
+        secContainer.classList.remove("show");
+      }, 700);
+      winnerNameText.textContent = "It's a tie!";
+    }
+  }
+}
+
+//play again button event listener that triggers an event listener on click, to reload the window
+playAgainBtn.onclick = () => {
+  window.location.reload();
+};
