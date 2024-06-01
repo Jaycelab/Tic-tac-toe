@@ -3,46 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Tic Tac Toe Game</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!--Title Section-->
+    <!--Welcome-->
     <div class="welcome">
-      <div class="game-title">TIC TAC TOE</div>
-      <button id="playBtn">Play</button>
+      <div class="game-title">Tic Tac Toe</div>
+      <button id="PlayBtn">Play</button>
     </div>
-
-    <!--Hero Section-->
+    <!--Main Container-->
     <div class="main-container">
       <div class="main-content">
         <div class="main-prompt">Choose the player you want to be</div>
+        <!--Player  Container-->
         <div class="char-options">
           <button class="pl-X">Player X</button>
           <button class="pl-O">Player O</button>
         </div>
       </div>
     </div>
+    <!--End Container-->
 
-    <!--Input Section-->
+    <!--Second Container-->
     <div class="sec-content">
       <div class="sec-title">Enter your name:</div>
       <input type="text" id="playerNameInput" placeholder="Your Name" />
-      <button id="starGameBtn">Start Game</button>
+      <button id="startGameBtn">Start Game</button>
     </div>
 
-    <!--Main Container -->
+    <!--Outer Board Container-->
     <div class="sec-container">
       <div class="game-board">
+        <!--Display current players turn-->
         <div class="player-turn">
-          <!--Span to group inline elements. Will flow within the surround texts and not start on a new line
-             -->
+          <!--Span to flow rather than new line. Player dynamic updated through input-->
           <span id="playerName"></span>
-          <span id="opponentName"> Computer </span>
+          <span id="opponentName">Computer</span>
+          <!--Highlight current user selection-->
           <div class="slider"></div>
         </div>
       </div>
-      <!--Grid Section 3x3-->
+
+      <!--Grid Area Game Section-->
       <div class="grid-area">
         <section>
           <span class="tile1"></span>
@@ -57,18 +60,22 @@
         <section>
           <span class="tile7"></span>
           <span class="tile8"></span>
-          <span class="tile0"></span>
+          <span class="tile9"></span>
         </section>
       </div>
+      <!--Grid Area Game Section End-->
     </div>
-
-    <!--Result Display-->
+    <!--Result Section-->
     <div class="game-result">
       <div class="winner-name"></div>
-      <div class="playAgainBtn">
+      <div class="PlayAgainBtn-name">
         <button>Play Again</button>
       </div>
     </div>
     <script src="script.js"></script>
+    <script
+      src="https://kit.fontawesome.com/1693128d29.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

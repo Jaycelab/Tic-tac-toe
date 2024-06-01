@@ -1,44 +1,46 @@
-//init var
-
-const mainContainer = document.querySelector(".main-container"), //selecting the main container
-  charSelectX = mainContainer.querySelector(".char-options .pl-x"), //selecting the x character
-  charSelectO = mainContainer.querySelector(".char-options .pl-o"), //selecting the o character
-  secContainer = document.querySelector(".sec-container"), //selecting the section container
-  playerTurn = document.querySelector(".player-turn"), //selecting the player turn
-  secSpan = document.querySelectorAll(".section span"), //selecting the span of all section spans
-  gameResult = document.querySelector(".game-result"), //selecting the game result
-  winnerNameText = gameResult.querySelector(".winner-name"), //selecting the winner calling gameResult and selecting the winner name along with the button
+// Var assignments
+const mainContainer = document.querySelector(".main-container"),
+  charSelectX = mainContainer.querySelector(".char-options .pl-X"),
+  charSelectO = mainContainer.querySelector(".char-options .pl-O"),
+  secContainer = document.querySelector(".sec-container"),
+  playerTurn = document.querySelector(".player-turn"),
+  secSpan = document.querySelectorAll("section span"), //selecting all grids
+  //Game Results Section
+  gameResult = document.querySelector(".game-result"),
+  winnerNameText = gameResult.querySelector(".winner-name"),
   playAgainBtn = gameResult.querySelector("button"),
-  welcomeSection = document.querySelector(".welcome"), //selecting the welcome section
-  playerName = document.getElementById("playerName"), //selecting the player name
-  secContent = document.querySelector(".sec-content"), //selecting the section content
-  playerNameInput = document.getElementById("playerNameInput"); //selecting the player name input
+  welcomeSection = document.querySelector(".welcome"),
+  playerName = document.getElementById("playerName"),
+  secContent = document.querySelector(".sec-content"),
+  playerNameInput = document.getElementById("playerNameInput");
 
-//codeblock to execute after windows finishes loading
+//func to run once windows loads
 window.onload = () => {
-  //looping through the span of the section to add the onclick event
+  //loop to add click event to each available span element
   for (let i = 0; i < secSpan.length; i++) {
-    secSpan[i].setAttribute("onclick", "clickedBox(this)"); //setAttribute to add the onclick event to each span. This keyword being passed as an argument to the clickedBox function
+    //adding onclick attribute to each span element being looped. The function clickedBox is called when the span is clicked and is set to the current element (this) being clicked. This is being passed as an arg to the clickedBox function
+    secSpan[i].setAttribute("onclick", "clickedBox(this)");
   }
 };
-//function to select the character X
+
+//event listerner for the character selection button
+//character X
 charSelectX.onclick = () => {
-  mainContainer.classList.add("hide"); //adding the hide class to the main
-  secContent.classList.add("show");
-  playerName.textConent = "Player X";
+  mainContainer.classList.add("hide"); //hides the main container
+  secContent.classList.add("show"); //displays secContent
+  playerNameInput.textContent = "Player X"; //sets the text content of the playerNameInput to Player X
 };
 
-//function to select the character O
+//player O
 charSelectO.onclick = () => {
-  mainContainer.classList.add("hide"); //adding the hide class to the main
+  mainContainer.classList.add("hide");
   secContent.classList.add("show");
-  //adding the active and player class to the playerTurn element
-  playerTurn.classList.add("active", "player");
-  playerName.textConent = "Player O"; //changing the text content of the playerName element
+  playerTurn.classList.add("active", "player"); //adds active and player class to playerTurn
+  playerNameInput.textContent = "Player O";
 };
 
-//playBtn event listener that triggers an event listener on click, to display the main container and hide the welcome section
-const playBtn = document.getElementById("playBtn"); //selecting the player button
+//Play Button Display
+const playBtn = document.getElementById("PlayBtn");
 playBtn.addEventListener("click", () => {
   welcomeSection.style.display = "none";
   mainContainer.style.display = "flex";
@@ -46,50 +48,45 @@ playBtn.addEventListener("click", () => {
   secContent.style.display = "block";
 });
 
-const startGameBtn = document.getElementById("startGameBtn"); //selecting the start game button
+//Start Game Button
+const startGameBtn = document.getElementById("startGameBtn");
 startGameBtn.addEventListener("click", () => {
-  const name = playerNameInput.value; // gets the value of the player name input field
-
+  const name = playerNameInput.value; //gets the value of the user name
   playerName.textContent =
     `${name} ${playerTurn.classList.contains("player") ? "O" : "X"}` ||
-    "Player" + playerSign; //set the player's name based on the input and the current players if it is X or O
-  secContent.classList.remove("show"); //removes the show class from the secondary content and displays the section container instead
+    "Player" + playerSign; //sets the text content of playerName to the user name
+  secContent.classList.remove("show");
   secContainer.classList.add("show");
 });
 
-//game related variables
-let playerXIcon = "fas fa-times"; //setting the player X icon
-let playerOIcon = "far fa-circle"; //setting the player O icon
-let playerSign = "X"; //setting the player sign to X
-let playerSignValue = "X"; //setting the player sign value to X
-let runBot = true; //setting the runBot to true
+let playerXIcon = "fas fa-times"; //icon for player X
+let playerOIcon = "far fa-circle"; //icon for player O
+let playerSign = "X";
+let playerSignValue = "X";
+let runBot = true; //boolean to check if the bot should run
 
-//click box function for handling the click on users keyboard
 function clickedBox(element) {
-  if (playerTurn.classList.contains("Player")) {
-    playerSign = "O"; //if the player turn contains the player class, set the player sign to O
-    playerSignValue = "O"; //if the player turn contains the player class, set the player sign value to O
-    element.innerHTML = `<i class = "${playerOIcon}"></i>`; //set the innerHTML of the element to the player O icon
-    playerTurn.classList.remove("active"); //remove the active class from the player turn element
-    element.setAttribute("id", playerSign); //set the id of the element to the player sign
-  } else {
-    element.innerHTML = `<i class = "${playerXIcon}"></i>`; //if the player turn does not contain the player class, set the innerHTML of the element to the player X icon and id to the player sign using setAttribute
+  if (playerTurn.classList.contains("player")) {
+    playerSign = "O";
+    playerSignValue = "O";
+    element.innerHTML = `<i class = "${playerOIcon}"></i>`; ////////////////
+    playerTurn.classList.remove("active");
     element.setAttribute("id", playerSign);
-    playerTurn.classList.add("active"); //add the active class to the player turn element
+  } else {
+    element.innerHTML = `<i class = "${playerXIcon}"></i>`;
+    element.setAttribute("id", playerSign);
+    playerTurn.classList.add("active");
   }
 
-  //overall after each move, select winner function if there is a winner
-  selectWinner(); //calling the selectWinner function
+  selectWinner();
 
-  element.style.pointerEvents = "none"; //disables click events for the click box
-  setContainer.style.pointerEvents = "none"; //siables click event for entire game point
+  element.style.pointerEvents = "none";
+  secContainer.style.pointerEvents = "none";
 
-  //***timeout function to delay the bot move***
-  //temp disable click events on section  container to prevent multiple clicks
-  let randomTimeDelay = (Math.random() * 1000 + 200).toFixed(); //setting the random time delay to a random number between 200 and 1000
+  let randomTimeDelay = (Math.random() * 1000 + 200).toFixed();
   setTimeout(() => {
-    bot(runBot); //calling the bot function
-  }, randomTimeDelay); //setting the random time delay
+    bot(runBot);
+  }, randomTimeDelay);
 }
 
 // BOT FUNCTION
@@ -111,11 +108,11 @@ function bot() {
   if (array.length > 0) {
     if (playerTurn.classList.contains("player")) {
       playerSign = "X";
-      secSpan[randomBox].innerHTML = `<i class = "${playerXIcon}"></i>`;
+      secSpan[randomBox].innerHTML = `<i class = '${playerXIcon}'></i>`;
       secSpan[randomBox].setAttribute("id", playerSign);
       playerTurn.classList.add("active");
     } else {
-      secSpan[randomBox].innerHTML = `<i class = "${playerOIcon}"></i>`;
+      secSpan[randomBox].innerHTML = `<i class = '${playerOIcon}'></i>`;
       playerTurn.classList.remove("active");
       secSpan[randomBox].setAttribute("id", playerSign);
     }
@@ -133,7 +130,7 @@ function getIdVal(classname) {
   return document.querySelector(".tile" + classname).id;
   //takes the paremter class name , which is the class name of the element, which retrieves the id of the element with the specific class name and returns it
 }
-//checks if three ids have the same sign 
+//checks if three ids have the same sign
 function checkIdSign(val1, val2, val3, sign) {
   if (
     //calls getIdVal func to retrieve the id of the element with the specific class name and checks if the id is equal to the sign
@@ -153,9 +150,9 @@ function selectWinner() {
     checkIdSign(1, 4, 7, playerSign) ||
     checkIdSign(2, 5, 8, playerSign) ||
     checkIdSign(3, 6, 9, playerSign) ||
-    checkIdSign(1, 5, 9, playerSign) ||
-    checkIdSign(3, 5, 7, playerSign) ||
-    checkIdSign(3, 6, 9, playerSign)
+    checkIdSign(3, 6, 9, playerSign) ||
+    checkIdSign(1, 5, 7, playerSign) ||
+    checkIdSign(3, 5, 7, playerSign)
   ) {
     runBot = false;
     bot(runBot);
