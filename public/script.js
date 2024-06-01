@@ -36,7 +36,7 @@ charSelectO.onclick = () => {
   mainContainer.classList.add("hide");
   secContent.classList.add("show");
   playerTurn.classList.add("active", "player"); //adds active and player class to playerTurn
-  playerNameInput.textContent = "Player O";
+  playerNameInput.textContent = "Player O"; //changing the text content of the playerName element
 };
 
 //Play Button Display
@@ -51,20 +51,21 @@ playBtn.addEventListener("click", () => {
 //Start Game Button
 const startGameBtn = document.getElementById("startGameBtn");
 startGameBtn.addEventListener("click", () => {
-  const name = playerNameInput.value; //gets the value of the user name
+  const name = playerNameInput.value; // gets the value of the player name input field
   playerName.textContent =
     `${name} ${playerTurn.classList.contains("player") ? "O" : "X"}` ||
-    "Player" + playerSign; //sets the text content of playerName to the user name
-  secContent.classList.remove("show");
+    "Player" + playerSign; //set the player's name based on the input and the current players if it is X or O
+  secContent.classList.remove("show"); //removes the show class from the secondary content and displays the section container instead
   secContainer.classList.add("show");
 });
-
+//game related variables
 let playerXIcon = "fas fa-times"; //icon for player X
 let playerOIcon = "far fa-circle"; //icon for player O
 let playerSign = "X";
 let playerSignValue = "X";
 let runBot = true; //boolean to check if the bot should run
 
+//click box function for handling the click on users keyboard
 function clickedBox(element) {
   if (playerTurn.classList.contains("player")) {
     playerSign = "O";
@@ -80,10 +81,12 @@ function clickedBox(element) {
 
   selectWinner();
 
+  //temp disable click events on section  container to prevent multiple clicks
   element.style.pointerEvents = "none";
   secContainer.style.pointerEvents = "none";
 
-  let randomTimeDelay = (Math.random() * 1000 + 200).toFixed();
+  //timeout function to delay the bot move
+  let randomTimeDelay = (Math.random() * 1000 + 200).toFixed(); //setting the random time delay to a random number between 200 and 1000
   setTimeout(() => {
     bot(runBot);
   }, randomTimeDelay);
