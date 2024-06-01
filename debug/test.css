@@ -158,11 +158,69 @@ body {
   position: relative; /*relative positioning to second container*/
   justify-content: space-between;
 }
-
+/*Player Turn Span*/
 .player-turn span {
   position: relative;
   z-index: 2;
   color: black;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px 0;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+/*First Element of Player Span*/
+.player-turn.active span:first-child {
+  color: #fff !important;
+}
+
+/*Last Element of Player Span*/
+.player-turn.active span:last-child {
+  color: aliceblue !important;
+}
+
+.player-turn span:first-child {
+  color: white;
+}
+
+/*Slider Section*/
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #79cc77;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.player-turn.active .slider {
+  left: 50%;
+}
+
+.player-turn.active span:first-child {
+  color: #56baed;
+}
+
+.player-turn.active span:nth-child(2) {
+  color: #fff;
+}
+
+.player-turn.active .slider {
+  left: 50%;
+}
+
+/*Grid Area */
+.grid-area {
+  margin-top: 20px;
+}
+
+.grid-area section {
+  display: flex;
 }
 
 /*Player Info Section*/
