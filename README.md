@@ -11,7 +11,7 @@ This is a simple implementation of the classic game Tic Tac Toe.
 
 ## Known Issues
 
-- After a delay, selectWinner() function to select a winner function does not get called.
+- After a delay, selectWinner() function to select a winner does not get called.
 - Choosing Player 0 assigns player to Computer instead of Player.
 - Winning result does not properly display on mobile and tablet
 - Computer does not block open space after two consecutive player moves
