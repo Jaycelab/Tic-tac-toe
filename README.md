@@ -2,13 +2,6 @@
 
 This is a simple implementation of the classic game Tic Tac Toe.
 
-## Rules
-
-- The game is played on a 3x3 grid.
-- Player take turns marking a cell with their respective symbols (usually X and O) against computer.
-- The first player to get three of their symbols in a row (horizontally, vertically, or diagonally) wins the game.
-- If all cells are filled and no player has won, the game is a draw.
-
 ## Known Issues
 
 - After a delay, selectWinner() function to select a winner does not get called.
