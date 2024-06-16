@@ -125,6 +125,16 @@ body {
   transform: scale(0.95);
 }
 
+#playerNameInput {
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-family: "Caveat Brush", cursive;
+}
 /*Second Container*/
 .sec-container {
   opacity: 0;
@@ -381,4 +391,66 @@ body {
 .sec-content button:hover {
   background-color: #6aebaa;
   transform: scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 1.2em;
+  }
+
+  .welcome {
+    padding: 30px 60px;
+  }
+
+  .game-title {
+    font-size: 40px;
+  }
+
+  .main-container {
+    padding: 40px 40px;
+  }
+
+  .main-prompt {
+    font-size: 25px;
+  }
+
+  .char-options button {
+    max-width: 150px;
+    padding: 8px 16px;
+    font-size: 0.7em;
+  }
+
+  .sec-container.show {
+    padding: 40px 60px;
+  }
+
+  .game-result {
+    padding: 40px 60px;
+  }
+
+  .game-result .winner-name {
+    font-size: 1.2em;
+  }
+
+  .game-result button {
+    padding: 8px 16px;
+    font-size: 0.7em;
+  }
+
+  .sec-content.show {
+    padding: 40px 60px;
+  }
+
+  .sec-title {
+    font-size: 0.8em;
+  }
+
+  .sec-content input {
+    font-size: 1.2em;
+  }
+
+  .sec-content button {
+    padding: 8px 16px;
+    font-size: 0.7em;
+  }
 }

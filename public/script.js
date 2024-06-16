@@ -23,7 +23,7 @@ window.onload = () => {
   }
 };
 
-//event listerner for the character selection button
+//event listener for the character selection button
 //character X
 charSelectX.onclick = () => {
   mainContainer.classList.add("hide"); //hides the main container
@@ -131,7 +131,7 @@ function bot() {
 //gets ID value of the specific class. selecting the element with a specific class and replace its id
 function getIdVal(classname) {
   return document.querySelector(".tile" + classname).id;
-  //takes the paremter class name , which is the class name of the element, which retrieves the id of the element with the specific class name and returns it
+  //takes the parameter class name , which is the class name of the element, which retrieves the id of the element with the specific class name and returns it
 }
 //checks if three ids have the same sign
 function checkIdSign(val1, val2, val3, sign) {
