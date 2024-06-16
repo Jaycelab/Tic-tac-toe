@@ -393,6 +393,7 @@ body {
   transform: scale(1.1);
 }
 
+/*Media Queries*/
 @media screen and (max-width: 768px) {
   body {
     font-size: 1.2em;
